@@ -97,6 +97,8 @@ public class KafkaConfig {
     private String autoOffsetResetConfig;
     @Value("${app.kafka.consumer.max-poll-records}")
     private Integer kafkaConsumerMaxPollRecords;
+    @Value("${app.kafka.consumer.partitionAssignmentStrategy}")
+    private String partitionAssignmentStrategy;
 
     @Bean
     public ConsumerFactory<String, Object> kafkaListenerStringConsumerFactory() {
@@ -113,6 +115,7 @@ public class KafkaConfig {
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetResetConfig);
         consumerProperties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, kafkaConsumerMaxPollRecords);
 
+        consumerProperties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, partitionAssignmentStrategy);
         ErrorHandlingDeserializer<Object> errorHandlingValueDeserializer
                 = new ErrorHandlingDeserializer<>(new JsonDeserializer<>());
         return new DefaultKafkaConsumerFactory<>(
