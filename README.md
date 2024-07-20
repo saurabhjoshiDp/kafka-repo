@@ -1,6 +1,4 @@
-TODO image
-
-### Run Locally
+### Run Locally using brew
 
 /opt/homebrew/opt/kafka/bin/zookeeper-server-start /opt/homebrew/etc/kafka/zookeeper.properties
 /opt/homebrew/opt/kafka/bin/kafka-server-start /opt/homebrew/etc/kafka/server.properties
